@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Category: {{ category }}</h2>
+
+<div class="status">
+    <p>Wrong guesses: {{ wrong_guesses }} / 6</p>
+</div>
+
+<div class="hangman">
+    {% if wrong_guesses >= 0 %}
+    <pre>
+      --------
+      |      |
+      |      {% if wrong_guesses >= 1 %}O{% endif %}
+      |     {% if wrong_guesses >= 3 %}/{% endif %}{% if wrong_guesses >= 2 %}|{% endif %}{% if wrong_guesses >= 4 %}\{% endif %}
+      |      {% if wrong_guesses >= 2 %}|{% endif %}
+      |     {% if wrong_guesses >= 5 %}/{% endif %} {% if wrong_guesses >= 6 %}\{% endif %}
+      -
+    </pre>
+    {% endif %}
+</div>
+
+<div class="word-display">
+    {{ display_word }}
+</div>
+
+<div class="used-letters">
+    <p>Letters used: {{ guessed_letters }}</p>
+</div>
+
+{% if game_over %}
+    <div class="message">
+        {% if won %}
+            <p>Congratulations! You've won!</p>
+        {% else %}
+            <p>Game over! The word was: {{ word }}</p>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for('new_game') }}" class="button">Play Again</a>
+        <a href="{{ url_for('index') }}" class="button secondary">Change Category</a>
+    </div>
+{% else %}
+    <div class="keyboard">
+        <form action="{{ url_for('guess') }}" method="post">
+            {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                <button type="submit" name="letter" value="{{ letter }}" {% if letter in guessed_letters %}disabled{% endif %}>
+                    {{ letter }}
+                </button>
+                {% if loop.index == 13 %}<br>{% endif %}
+            {% endfor %}
+        </form>
+    </div>
+{% endif %}
+{% endblock %}

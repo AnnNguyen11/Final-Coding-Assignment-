@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Choose a Category</h2>
+<div>
+    <a href="{{ url_for('select_category', category='fruits') }}" class="button">Fruits🍑</a>
+    <a href="{{ url_for('select_category', category='countries') }}" class="button">Countries🚩</a>
+    <a href="{{ url_for('select_category', category='random') }}" class="button">Random Words🤷</a>
+</div>
+{% endblock %}
