@@ -16,7 +16,6 @@ This is a simple, interactive web-based version of the well-known Hangman game d
 * [File Structure](#file-structure)
 * [Code Explanation](#code-explanation)
 * [Detailed Functionality and Design Choices](#detailed-functionality-and-design-choices)
-* [Future Enhancements](#future-enhancements)
 
 
 ## Project Overview
@@ -80,12 +79,4 @@ The bulk of the Hangman game functionality is in hangman.py. The most important 
 * *Word Loading:* The load_words function loads words from text files, and WORD_LISTS holds these lists. This modular approach allows easy addition or modification of word lists.
 * *Session Management:* Flask sessions are used to hold and keep track of the game state, i.e., the secret word, guessed characters, and wrong guesses. This keeps the game state consistent throughout the user's session.
 
-## Future Enhancements
 
-* *Enhanced UI/UX:* Optimize the user interface using CSS design and interactive elements.
-* *Adjustable Difficulty Levels:* Enable adjustable difficulty levels.
-* *Hinting System:* Implement a system for providing hints.
-* *Scoring System:* Provide support for a scoring system.
-* *Database Integration:* Store word lists and game data in a database.
-* *Responsive Design:* Ensure the game is compatible with varying screen sizes.
-* *Visual Hangman:* Use images that change depending on incorrect attempts.
